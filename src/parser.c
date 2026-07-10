@@ -12,8 +12,10 @@
  *     Number of parsed arguments.
  */
 int parse_input(char *line, char *argv[]) {
-    if (line == NULL || argv == NULL)
+  if (line == NULL || argv == NULL)
+{
     return 0;
+}
 const char *delim = " \t\n";
     int i = 0;
   char *token = strtok(line, delim);
