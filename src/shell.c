@@ -2,12 +2,15 @@
 #include <string.h>
 
 #include "shell.h"
+#include "parser.h"
 
 #define MAX_LINE 1024
 
 void shell_loop(void)
 {
     char line[MAX_LINE];
+    char *argv[MAX_ARGS];
+int argc;
 
     while (1)
     {
@@ -25,6 +28,16 @@ void shell_loop(void)
         if (strcmp(line, "exit") == 0)
             break;
 
-        printf("You entered: %s\n", line);
+        argc = parse_input(line, argv);
+
+if (argc == 0)
+    continue;
+
+printf("argc = %d\n", argc);
+
+for (int i = 0; i < argc; i++)
+{
+    printf("argv[%d] = %s\n", i, argv[i]);
+}
     }
 }
